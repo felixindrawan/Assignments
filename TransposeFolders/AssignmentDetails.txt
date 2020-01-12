@@ -1,0 +1,25 @@
+Automates the process of organizing files. 
+==============
+This shell script takes 2 command line arguments (assuming they're directory names),
+a source directory name, and the target directory name. The script doesn't run
+if user gives less than 2 arguments.
+
+The target directory will be removed recursively if it exist, and and a new
+directory will be created with the files switched. For example,
+
+src/2017/A08
+src/2018/A31
+src/2018/A67
+src/2019/A22 
+
+will be transposed to
+
+tgt/A08/2017
+tgt/A31/2018
+tgt/A67/2018
+tgt/A22/2019
+
+Assume:
+- src exist, and there are two levels of directories under src.
+- Directory names doesn't start with dots
+- src != tgt
