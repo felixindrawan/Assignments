@@ -10,7 +10,8 @@ argv[4] filename to save to (client)
 #include <netinet/in.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <string.h
+#include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
@@ -35,25 +36,28 @@ int main(int argc, char **argv){
 	memset(&server_addr, 0, sizeof(struct sockaddr_in));
 	server_addr.sin_family = AF_INET;
 	if (!inet_pton(AF_INET, argv[1], &server_addr.sin_addr)){
-		error("Invalid address");
+		error("Adress parsing failed");
 	}
 	
 	if(sscanf(argv[2], "%d", &port_number) != 1) {
 		error("Invalid port number");
 	}
 	server_addr.sin_port = htons(port_number);
-
-	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	
+	if (sockfd < 0){
 		error("Error opening socket");
 	}
-	if (connect(sockfd, (Struct sockaddr *)&server_addr, sizeof(struct sockaddr_in))){
+	if (connect(sockfd, (struct sockaddr *)&server_addr, sizeof(struct sockaddr_in)) == -1){
 		error("Connecting failed");
 	}
 	
+	write(sockfd, argv[3], strlen(argv[3])+1);
+	
 	int n;
 	char buffer[CHARLIMIT];
-	
-	if ((n = read(sockfd, buffer, 1)) != 1){
+	n = read(sockfd, buffer, 1);
+	if (n != 1){
 		error("Reading failed");
 	}
 	if (buffer[0] == 0) {
@@ -68,7 +72,7 @@ int main(int argc, char **argv){
 	while ((n = read(sockfd, buffer, CHARLIMIT)) > 0){
 		write(user_fd, buffer, n);
 	}
-	close(userfd);
+	close(user_fd);
 	close(sockfd);
 	
 	return 0;
