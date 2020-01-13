@@ -1,0 +1,20 @@
+Remote file transfer between a server and client over the Internet domain stream sockets.
+==============
+Protocol
+- Client sends the file name after connecting to the server
+- Based on if opening file for reading is successful, serer reports if it can send the file
+- If yes, server sends the file to client
+- Server closes the connection
+- Client closes the connection
+--------------
+Client
+- Client takes 4 command line arguments; server IP address in dot notation, server port number, reqested filename (server side), filename to save to (client side)
+- Client exits with code 1 if connecting with server is unsuccesful
+- When server sends the file, client receives and saves the file and exits with code 0
+- If writing the file fails, client closes connection and exits with code 1
+- If server can't send the file, client exits with code 1
+--------------
+Server
+- Server takes 1 command line arguments; server port number
+- Server binds to wildcard address(INADDR_ANY) at the port number
+- Server serves new clients indefinitely
