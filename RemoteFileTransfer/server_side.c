@@ -2,7 +2,8 @@
 #include <netinet/in.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <string.h
+#include <string.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
@@ -24,7 +25,8 @@ int main(int argc, char **argv){
 	int port_number;
 	struct sockaddr_in server_addr; //Server address
 	
-	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd < 0) {
 		error("Socket not created");
 	}
 	
@@ -35,7 +37,6 @@ int main(int argc, char **argv){
 		error("Invalid port number");
 	}
 	server_addr.sin_port = htons(port_number);
-	
 	if (bind(sockfd, (struct sockaddr *) &server_addr, sizeof(struct sockaddr_in)) < 0){
 		error("Binding failed");	
 	}
@@ -46,19 +47,20 @@ int main(int argc, char **argv){
 		int n;
 		char buffer[CHARLIMIT];
 		
-		if ((newsockfd = accept(sockfd, NULL, NULL)) < 0){
+		newsockfd = accept(sockfd, NULL, NULL);
+		if (newsockfd < 0){
 			error("Accepting failed");
 		}
 		
 		//Get file name from client
 		n = read(newsockfd, buffer, CHARLIMIT);
-		if (n != 1){
+		if (n < 0){
 			close(newsockfd);
 			error("Reading failed");
 		}
 		
 		int user_fd; //File descriptor for user's file
-		if((user_fd = open(buffer, 0_RDONLY)) == -1){ //If can't open/send, send 0
+		if((user_fd = open(buffer, O_RDONLY)) == -1){ //If can't open/send, send 0
 			buffer[0] = 0;
 			write(newsockfd, buffer, 1);
 		} else { //If can open/send, send 1
@@ -75,7 +77,7 @@ int main(int argc, char **argv){
 			close(user_fd);
 		}
 		close(newsockfd);
-		
-		return 0;
 	}
+	
+	return 0;
 }
