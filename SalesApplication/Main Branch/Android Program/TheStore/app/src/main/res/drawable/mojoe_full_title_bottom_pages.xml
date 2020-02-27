@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:drawable="@drawable/mojoe_full_title"
+    android:width="260dp"
+    android:height="115dp"/>
+</layer-list>

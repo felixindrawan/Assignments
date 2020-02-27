@@ -1,0 +1,3 @@
+Through this assignment, I learned the importance of SOLID Design, and the power of Abstraction and Decomposition.
+
+Main application found on src/com/b07/store/SalesApplication.java

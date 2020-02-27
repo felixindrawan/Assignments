@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorPrimaryDark"
+  android:orientation="vertical"
+  tools:context=".InitActivity">
+
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginLeft="50dp"
+    android:paddingBottom="10dp"
+    android:layout_gravity="center"
+    android:background="@drawable/button_round">
+    <TextView
+      android:id="@+id/init_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="10dp"
+      android:layout_marginBottom="10dp"
+      android:text="@string/init_mode"
+      android:textSize="25dp"
+      android:textColor="@color/colorAccent"/>
+
+    <Button
+      android:id="@+id/init_createAdmin"
+      android:layout_width="250dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="@string/create_admin"
+      android:textColor="@color/colorHighEmp"
+      android:background="@drawable/pages_button_round"
+      android:elevation="8dp" />
+
+    <Button
+      android:id="@+id/init_createEmpl"
+      android:layout_width="250dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="10dp"
+      android:text="@string/create_empl"
+      android:textColor="@color/colorHighEmp"
+      android:background="@drawable/pages_button_round"
+      android:elevation="8dp" />
+
+    <Button
+      android:id="@+id/exit"
+      android:layout_width="250dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="10dp"
+      android:text="@string/exit"
+      android:textColor="@color/colorRed"
+      android:background="@drawable/pages_button_round"
+      android:elevation="8dp" />
+  </LinearLayout>
+
+  <ImageView
+    android:id="@+id/logo"
+    android:layout_width="305dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:src="@drawable/mojoe_full_title_bottom_pages" />
+
+  <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:src="@drawable/delete_this_before_submitting"/>
+</LinearLayout>

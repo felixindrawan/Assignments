@@ -1,0 +1,30 @@
+<resources>
+  <string name="app_name">TheStore</string>
+  <string name="welcome_str">Welcome to MoJoe Jojo Store</string>
+  <string name="login_str">Login</string>
+  <string name="username_str">Username</string>
+  <string name="password_str">Password</string>
+  <string name="login_failed">INCORRECT USERNAME/PASSWORD</string>
+  <string name="exit">Exit</string>
+  <string name="logout">Logout</string>
+
+  <string name="admin_mode">Admin Mode</string>
+  <string name="promote_str">Promote Employee</string>
+
+  <string name="employee_mode">Employee Mode</string>
+  <string name="authenticate_empl">Authenticate New Employee</string>
+  <string name="new_user">Create New User</string>
+  <string name="new_account">Create New Account</string>
+  <string name="new_employee">Create New Employee</string>
+  <string name="restock_inv">Restock Inventory</string>
+
+  <string name="customer_mode">Customer Mode</string>
+  <string name="view_cart">View Cart</string>
+  <string name="add_item">Add Item To Cart</string>
+  <string name="check_out">Check Out</string>
+
+  <string name="init_mode">Initializing Mode</string>
+  <string name="create_admin">Create Admin</string>
+  <string name="create_empl">Create Employee</string>
+
+</resources>
